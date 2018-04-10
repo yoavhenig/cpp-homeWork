@@ -10,7 +10,7 @@ Member::Member(){
 }
 
 Member::~Member(){
-  std::cout << "Destructing" << '\n';
+  
   //increase the active members
   activeMembers-=1;
 
