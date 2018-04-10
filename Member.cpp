@@ -10,9 +10,23 @@ Member::Member(){
 }
 
 Member::~Member(){
-  activeMembers-=1;
   std::cout << "Destructing" << '\n';
+  //increase the active members
+  activeMembers-=1;
 
+  //המשתמש הזה כבר לא יכול לעקוב, מעדכן אצל כולם שנמחק להם עוקב
+  map <int,Member*>::iterator i;
+  i=followingMap.begin();
+  while(i!=followingMap.end()){
+    i->second->followersMap.erase(id);
+    i++;
+  }
+  //אי אפשר לעקוב אחרי המשתמש הזה- מוחק אותו אצל כולם
+  i=followersMap.begin();
+  while(i!=followersMap.end()){
+    i->second->followingMap.erase(id);
+    i++;
+  }
 }
 
 int Member::numFollowers(){
