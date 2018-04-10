@@ -17,9 +17,6 @@ public:
   //Constructor and distructor
   Member();
   ~Member();
-  //setters
-  void setFollowers(int x);
-  void setFollowing(int x);
   //functions
   void follow(Member& m);
   void unfollow(Member& m);
